@@ -22,7 +22,7 @@ export default function hero() {
         rent, and every rep is a middle finger to mediocrity. Leg day?
         <span className="text-red-700 font-medium"> Mandatory</span>. Tank tops?
         <span className="text-red-700 font-medium"> Always</span>. Complaining?
-        Bro,
+        Bro,{" "}
         <span className="text-red-700 font-medium">
           save it for your therapist
         </span>
