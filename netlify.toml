@@ -1,0 +1,4 @@
+[build]
+base = "swole-patrol"
+publish = "swole-patrol/dist"
+command = "npm run build"
