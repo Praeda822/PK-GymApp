@@ -45,21 +45,21 @@ export default function Generator() {
       return;
     }
 
-    if (muscles.length > 3) {
+    if (muscles.length > 2) {
       return;
     }
 
     if (poison !== "individual") {
       setMuscles([muscleGroup]);
-      return;
-    }
-
-    if (muscles.includes(muscleGroup)) {
-      setMuscles(muscles.filter((val) => val !== muscleGroup));
+      // Closes the modal by default when a new one is selected
+      setShowModal(false);
       return;
     }
 
     setMuscles([...muscles, muscleGroup]);
+    if (muscles.length === 2) {
+      setShowModal(false);
+    }
   }
 
   // SectionWrapper will contain the generator for child elements that WON"T be repeated
@@ -78,6 +78,7 @@ export default function Generator() {
           return (
             <button
               onClick={() => {
+                setMuscles([]);
                 setPosion(type);
               }}
               className={
@@ -100,9 +101,11 @@ export default function Generator() {
       <div className="bg-slate-950  border bordcer-solid border-red-400 rounded-lg flex flex-col">
         <button
           onClick={toggleModal}
-          className="relative p-3 flex items-center justify-center "
+          className="relative p-3 flex items-center justify-center"
         >
-          <p>Select muscle groups</p>
+          <p className="capitalize">
+            {muscles.length == 0 ? "Select muscle groups" : muscles.join(" ")}
+          </p>
           <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
         </button>
         {showModal && (
