@@ -103,8 +103,8 @@ export default function Generator(props) {
 
       <Header
         index={"02"}
-        title={"Lock-on Targets"}
-        description={"Select your muscle groups"}
+        title={"Muscle Groups"}
+        description={"Please select at least 3 muscle groups."}
       />
       <div
         className={
