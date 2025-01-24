@@ -1,5 +1,6 @@
 // rfc
 import React from "react";
+import Button from "./Button";
 
 export default function hero() {
   return (
@@ -30,9 +31,7 @@ export default function hero() {
         trade excuses for gains, welcome aboard the SWOLE EXPRESS, next stop:
         Absolute Unit City.
       </p>
-      <button className="px-8 py-4 rounded-md border-[2px] bg-slate-950 border-red-700 border-solid redShadow duration-200">
-        <p>Accept & Begin</p>
-      </button>
+      <Button text="Accept & Begin" />
     </div>
   );
 }
