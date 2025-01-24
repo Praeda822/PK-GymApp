@@ -1,5 +1,5 @@
 // rfc
-import React from "react";
+import React, { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { WORKOUTS } from "../utils/swoldier";
 
@@ -19,8 +19,22 @@ function Header(props) {
 }
 
 export default function Generator() {
+  // In regards to anything I expect the user to interact with (any anything interactive in React), I need to keep track of the state, in this case I need to keep track of the modal state
+  // So instead of defining them like I traditionally would:
+
   // Handles the dropdown for muscle groups
-  let showModal = false;
+  // let showModal = false;
+
+  // I instead define them as React Stateful variables:
+  // Remembering to import useState from react...
+  // So the syntax ends up being: const [variableName, setVariableName] = useState(initialValue)
+  const [showModal, setShowModal] = useState(false);
+
+  function toggleModal() {
+    // Now, instead of directly changing the variable, I use the setter function to update the state
+    // showModal = !showModal;
+    setShowModal(!showModal);
+  }
 
   // SectionWrapper will contain the generator for child elements that WON"T be repeated
   return (
@@ -51,7 +65,10 @@ export default function Generator() {
         description={"Select your muscle groups"}
       />
       <div className="bg-slate-950  border bordcer-solid border-red-400 rounded-lg flex flex-col">
-        <button className="relative p-3 flex items-center justify-center ">
+        <button
+          onClick={toggleModal}
+          className="relative p-3 flex items-center justify-center "
+        >
           <p>Select muscle groups</p>
           <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
         </button>
