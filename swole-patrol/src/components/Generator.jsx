@@ -19,7 +19,16 @@ function Header(props) {
   );
 }
 
-export default function Generator() {
+export default function Generator(props) {
+  const {
+    muscles,
+    setMuscles,
+    poison,
+    setPoison,
+    goal,
+    setGoal,
+    updateWorkout,
+  } = props;
   // In regards to anything I expect the user to interact with (any anything interactive in React), I need to keep track of the state, in this case I need to keep track of the modal state
   // So instead of defining them like I traditionally would:
 
@@ -30,9 +39,6 @@ export default function Generator() {
   // Remembering to import useState from react...
   // So the syntax ends up being: const [variableName, setVariableName] = useState(initialValue)
   const [showModal, setShowModal] = useState(false);
-  const [poison, setPosion] = useState("individual");
-  const [muscles, setMuscles] = useState([]);
-  const [goal, setGoal] = useState("strength_power");
 
   function toggleModal() {
     // Now, instead of directly changing the variable, I use the setter function to update the state
@@ -80,7 +86,7 @@ export default function Generator() {
             <button
               onClick={() => {
                 setMuscles([]);
-                setPosion(type);
+                setPoison(type);
               }}
               className={
                 "bg-slate-950 border duration-200 px-4 hover:border-red-700 py-3 rounded-lg " +
@@ -149,7 +155,7 @@ export default function Generator() {
         title={"Conquer your goals"}
         description={"Select your ultimate objective."}
       />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
           return (
             <button
@@ -167,7 +173,7 @@ export default function Generator() {
           );
         })}
       </div>
-      <Button text="Formulate" />
+      <Button func={updateWorkout} text="Formulate" />
     </SectionWrapper>
   );
 }
