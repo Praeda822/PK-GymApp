@@ -40,7 +40,12 @@ export default function Generator() {
   }
 
   function updateMuscles(muscleGroup) {
-    if (muscles.length > 2) {
+    if (muscles.includes(muscleGroup)) {
+      setMuscles(muscles.filter((val) => val !== muscleGroup));
+      return;
+    }
+
+    if (muscles.length > 3) {
       return;
     }
 
