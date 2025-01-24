@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { SCHEMES, WORKOUTS } from "../utils/swoldier";
+import Button from "./Button";
 
 function Header(props) {
   const { index, title, description } = props;
@@ -82,7 +83,7 @@ export default function Generator() {
                 setPosion(type);
               }}
               className={
-                "bg-slate-950 border duration-200 hover:border-red-700 py-3 rounded-lg " +
+                "bg-slate-950 border duration-200 px-4 hover:border-red-700 py-3 rounded-lg " +
                 (type === poison ? "border-red-700" : "border-red-400")
               }
               key={typeIndex}
@@ -98,7 +99,15 @@ export default function Generator() {
         title={"Lock-on Targets"}
         description={"Select your muscle groups"}
       />
-      <div className="bg-slate-950  border bordcer-solid border-red-400 rounded-lg flex flex-col">
+      <div
+        className={
+          "bg-slate-950 border border-solid rounded-lg flex flex-col " +
+          ((poison === "individual" && muscles.length === 3) ||
+          (poison !== "individual" && muscles.length > 0)
+            ? "border-red-700"
+            : "border-red-400")
+        }
+      >
         <button
           onClick={toggleModal}
           className="relative p-3 flex items-center justify-center"
@@ -148,7 +157,7 @@ export default function Generator() {
                 setGoal(scheme);
               }}
               className={
-                "bg-slate-950 border duration-200 hover:border-red-700 py-3 rounded-lg " +
+                "bg-slate-950 border duration-200 px-4 hover:border-red-700 py-3 rounded-lg " +
                 (scheme === goal ? "border-red-700" : "border-red-400")
               }
               key={schemeIndex}
@@ -158,6 +167,7 @@ export default function Generator() {
           );
         })}
       </div>
+      <Button text="Formulate" />
     </SectionWrapper>
   );
 }
