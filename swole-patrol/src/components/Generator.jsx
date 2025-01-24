@@ -72,6 +72,7 @@ export default function Generator(props) {
   // SectionWrapper will contain the generator for child elements that WON"T be repeated
   return (
     <SectionWrapper
+      id={"generate"}
       header={"generate your workout"}
       title={["It's", "Swole", "o'clock"]}
     >

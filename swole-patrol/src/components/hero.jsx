@@ -31,7 +31,12 @@ export default function hero() {
         trade excuses for gains, welcome aboard the SWOLE EXPRESS, next stop:
         Absolute Unit City.
       </p>
-      <Button text="Accept & Begin" />
+      <Button
+        func={() => {
+          window.location.href = "/#generate";
+        }}
+        text="Accept & Begin"
+      />
     </div>
   );
 }
